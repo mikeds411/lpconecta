@@ -111,4 +111,4 @@ LOGGING = {
 }
 
 # Número do WhatsApp da equipe (só dígitos, com DDI 55).
-WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "5581996236811")
+WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "5561999999999")
