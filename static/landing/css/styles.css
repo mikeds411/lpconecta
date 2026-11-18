@@ -301,3 +301,6 @@ a.hex:hover,a.hex:focus-visible{--bg:var(--orange-400);--fg:#fff;transform:scale
 .brand__logo{height:50px;width:auto}
 .brand--light .brand__logo{height:46px;filter:brightness(0) invert(1)}
 @media (max-width:640px){.brand__logo{height:42px}}
+
+/* ---------- Selo "Valor acessível" (Medicina Veterinária) ---------- */
+.clinic__tag{align-self:flex-start;margin-top:-4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.02em;color:#b24800;background:rgba(249,115,6,.12);border:1px solid rgba(249,115,6,.35)}
