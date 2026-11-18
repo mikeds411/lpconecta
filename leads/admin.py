@@ -3,7 +3,7 @@ import csv
 from django.contrib import admin
 from django.http import HttpResponse
 
-from .models import Agendamento, Contato
+from .models import Agendamento, CliqueWhatsApp, Contato
 
 
 @admin.action(description="Exportar selecionados para CSV")
@@ -39,3 +39,18 @@ class ContatoAdmin(admin.ModelAdmin):
     readonly_fields = ("criado_em", "consentimento_lgpd", "ip", "user_agent", "origem")
     date_hierarchy = "criado_em"
     actions = [exportar_csv]
+
+
+@admin.register(CliqueWhatsApp)
+class CliqueWhatsAppAdmin(admin.ModelAdmin):
+    list_display = ("criado_em", "clinica", "local", "dispositivo", "origem")
+    list_filter = ("clinica", "local", "dispositivo", "criado_em")
+    search_fields = ("origem",)
+    date_hierarchy = "criado_em"
+    actions = [exportar_csv]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False

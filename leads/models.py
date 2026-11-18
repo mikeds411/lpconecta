@@ -56,3 +56,30 @@ class Contato(Base):
 
     def __str__(self):
         return f"{self.nome} <{self.email}>"
+
+
+class CliqueWhatsApp(models.Model):
+    """Um clique em "Falar no WhatsApp". Não guarda IP nem dados pessoais."""
+
+    CLINICAS = [
+        ("medicina", "Medicina"), ("enfermagem", "Enfermagem"), ("nutricao", "Nutrição"),
+        ("odontologia", "Odontologia"), ("fisioterapia", "Fisioterapia"), ("psicologia", "Psicologia"),
+        ("estetica", "Estética"), ("veterinaria", "Medicina Veterinária"), ("geral", "Número geral"),
+    ]
+    LOCAIS = [
+        ("cartao", "Cartão da clínica"), ("rodape", "Rodapé"), ("flutuante", "Botão flutuante"),
+    ]
+
+    criado_em = models.DateTimeField("quando", auto_now_add=True, db_index=True)
+    clinica = models.CharField("clínica", max_length=20, choices=CLINICAS)
+    local = models.CharField("onde clicou", max_length=12, choices=LOCAIS)
+    dispositivo = models.CharField(max_length=10, choices=[("celular", "Celular"), ("computador", "Computador")])
+    origem = models.CharField("veio de", max_length=120, blank=True, help_text="Site que trouxe a pessoa (vazio = acesso direto).")
+
+    class Meta:
+        ordering = ["-criado_em"]
+        verbose_name = "clique no WhatsApp"
+        verbose_name_plural = "cliques no WhatsApp"
+
+    def __str__(self):
+        return f"{self.get_clinica_display()} — {self.criado_em:%d/%m/%Y %H:%M}"

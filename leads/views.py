@@ -1,9 +1,15 @@
-from django.http import JsonResponse
+from urllib.parse import urlsplit
+
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 
 from .forms import AgendamentoForm, ContatoForm
+from .models import CliqueWhatsApp
+
+_CLINICAS = {c for c, _ in CliqueWhatsApp.CLINICAS}
+_LOCAIS = {c for c, _ in CliqueWhatsApp.LOCAIS}
 
 
 @ensure_csrf_cookie
@@ -49,3 +55,23 @@ def contato(request):
     if erro:
         return erro
     return JsonResponse({"ok": True})
+
+
+@csrf_exempt  # enviado por navigator.sendBeacon, que não manda cabeçalhos; só grava contadores
+@require_POST
+def clique(request):
+    clinica = request.POST.get("clinica", "")
+    local = request.POST.get("local", "")
+    if clinica not in _CLINICAS or local not in _LOCAIS:
+        return HttpResponse(status=400)
+    origem = urlsplit(request.POST.get("origem", "")).hostname or ""
+    if origem == request.get_host().split(":")[0]:
+        origem = ""
+    ua = request.META.get("HTTP_USER_AGENT", "")
+    CliqueWhatsApp.objects.create(
+        clinica=clinica,
+        local=local,
+        dispositivo="celular" if "Mobi" in ua or "Android" in ua else "computador",
+        origem=origem[:120],
+    )
+    return HttpResponse(status=204)

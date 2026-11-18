@@ -1,7 +1,7 @@
 # Conecta Saúde
 
 Site das Clínicas-Escola da UNICEPLAC em Django, pronto para a Vercel.
-Os formulários de **agendamento** e **contato** gravam no banco, e você vê tudo no painel em `/painel/` (com filtro, busca, mudança de status e exportação para CSV/Excel).
+Cada clique em **"Falar no WhatsApp"** (por clínica, rodapé e botão flutuante) é registrado no banco, e você vê tudo no painel em `/painel/` → *Cliques no WhatsApp*, com filtros por clínica, data e aparelho e exportação para CSV/Excel. Não guardamos IP nem dados pessoais dos visitantes.
 
 ## Rodar no seu computador
 
@@ -24,7 +24,6 @@ Site: http://localhost:8000 · Painel: http://localhost:8000/painel/
    |---|---|
    | `SECRET_KEY` | um texto longo e aleatório (`python -c "import secrets;print(secrets.token_urlsafe(50))"`) |
    | `DEBUG` | `0` |
-   | `WHATSAPP_NUMBER` | número da equipe só com dígitos, ex. `5581996236811` |
    | `ALLOWED_HOSTS` / `CSRF_TRUSTED_ORIGINS` | só se usar domínio próprio, ex. `conectasaude.com.br` / `https://conectasaude.com.br` |
 4. **Crie as tabelas no banco de produção** (uma vez, e de novo sempre que mudar os modelos). No seu PC, com a `DATABASE_URL` copiada da Vercel:
    ```powershell
@@ -34,11 +33,18 @@ Site: http://localhost:8000 · Painel: http://localhost:8000/painel/
 
 ## Onde mexer
 
-- `templates/index.html` — a página (textos, especialidades, depoimentos, FAQ ficam no `<script>` no fim).
-- `leads/models.py` — quais dados são guardados.
-- `leads/forms.py` — validação e lista de especialidades aceitas.
-- `leads/admin.py` — o painel.
+- `templates/index.html` — os textos da página (clínicas, passos, depoimentos, FAQ, rodapé).
+- `static/landing/js/config.js` — **números de WhatsApp** (geral e de cada clínica; vazio = usa o geral).
+- `static/landing/css/styles.css` — visual e animações.
+- `static/landing/js/main.js` — menu mobile e item ativo do menu na rolagem.
+- `static/landing/js/track.js` — contagem dos cliques no WhatsApp.
+- `static/img/` — logo, favicon. Para a foto do hero: salve em `static/landing/assets/hero-photo.jpg`, descomente `--hero-photo` no topo do `styles.css` e remova o bloco `.honey` do `index.html`.
+- `leads/` — banco de dados e painel.
+
+Sempre que mudar `leads/models.py`: rode `makemigrations` aqui e `migrate` no banco do Neon.
 
 ## LGPD
 
-Os formulários só são aceitos com o checkbox de consentimento marcado, e o registro guarda data, IP e navegador como prova do aceite. Antes de ir ao ar, troque os textos ilustrativos das páginas *Política de Privacidade*, *Termos* e *LGPD* (objeto `INFO` em `templates/index.html`) por textos revisados.
+A contagem de cliques não guarda dados pessoais (só clínica, local do clique, celular/computador e o site de origem). Os links de Política de Privacidade, Termos e LGPD no rodapé ainda apontam para o próprio rodapé: falta criar essas páginas com textos revisados.
+
+O backend ainda tem os endpoints de agendamento e contato (`/api/agendamento/`, `/api/contato/`) e as telas no painel, prontos caso a página volte a ter formulário.
