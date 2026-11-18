@@ -98,5 +98,16 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
+# Envia erros (com traceback) para o console, que aparece em Logs na Vercel.
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "loggers": {
+        "django": {"handlers": ["console"], "level": "INFO"},
+        "django.request": {"handlers": ["console"], "level": "ERROR", "propagate": False},
+    },
+}
+
 # Número do WhatsApp da equipe (só dígitos, com DDI 55).
 WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "5581996236811")
