@@ -88,6 +88,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 # Serve os arquivos do admin direto dos apps, sem precisar de collectstatic na Vercel.
 WHITENOISE_USE_FINDERS = True
 
