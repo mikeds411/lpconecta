@@ -1,0 +1,609 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Conecta Saúde</title>
+<meta name="description" content="Atendimentos gratuitos nas Clínicas-Escola da UNICEPLAC.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;1,400&display=swap">
+</head><body>
+<style>
+/* Layout: cabeçalho fixo, hero em duas colunas com foto à direita, faixa de destaques em vidro verde,
+   cartões de especialidades, passos, painel verde com depoimentos e rodapé verde escuro. Seis "abas" por hash. */
+:root{
+  --bg:#ffffff; --surface:#ffffff; --surface-2:#f4f8f2; --fg:#111c2c; --muted:#43474f; --faint:#737780;
+  --brand:#094839; --brand-2:#104002; --green:#389108; --green-soft:rgba(56,145,8,.08); --line:rgba(56,145,8,.22);
+  --navy:#001e40; --orange-1:#f97306; --orange-2:#c95d05; --orange-line:#da6608; --panel:#094839; --footer:#0a4a37;
+  --ring:#16ae2d; --shadow:0 1px 1px rgba(0,0,0,.05); --font:'Inter',system-ui,sans-serif; --font2:'Plus Jakarta Sans','Inter',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1511; --surface:#15201a; --surface-2:#111b16; --fg:#e8f0ea; --muted:#aab9af; --faint:#8a988f;
+  --brand:#8fd47a; --brand-2:#9ddc88; --green:#6fc443; --green-soft:rgba(111,196,67,.1); --line:rgba(111,196,67,.28);
+  --navy:#cfe3ff; --shadow:0 1px 1px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1511; --surface:#15201a; --surface-2:#111b16; --fg:#e8f0ea; --muted:#aab9af; --faint:#8a988f;
+  --brand:#8fd47a; --brand-2:#9ddc88; --green:#6fc443; --green-soft:rgba(111,196,67,.1); --line:rgba(111,196,67,.28);
+  --navy:#cfe3ff; --shadow:0 1px 1px rgba(0,0,0,.4);color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.5;margin:0;
+  padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.i{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:24px;min-height:80px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brand);line-height:1}
+.brand svg{width:56px;height:56px}
+.brand b{display:block;font-weight:600;font-size:22px;letter-spacing:.2px}
+.brand span{display:block;font-weight:200;font-size:22px}
+nav.main{display:flex;gap:30px;margin-left:auto;margin-right:auto}
+nav.main a{text-decoration:none;color:var(--muted);font-size:15px;padding:6px 0;border-bottom:2px solid transparent}
+nav.main a:hover{color:var(--fg)}
+nav.main a[aria-current="page"]{color:var(--navy);font-weight:700;border-color:var(--green)}
+.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:10px;width:38px;height:38px;display:grid;place-items:center}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:10px;width:40px;height:40px;place-items:center}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:14px 28px;font-weight:600;font-size:15px;letter-spacing:.14px;border:3px solid var(--orange-line);color:#fff;text-decoration:none;
+  background:linear-gradient(180deg,var(--orange-1) 1%,var(--orange-2) 48%,var(--orange-2));box-shadow:0 6px 16px rgba(201,93,5,.25)}
+.btn:hover{filter:brightness(1.06)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:1px solid #389108;background:var(--green-soft);color:var(--brand-2);border-radius:13px;padding:8px 22px;font-weight:500;font-size:16px;text-decoration:none}
+.btn-ghost:hover{background:rgba(56,145,8,.16)}
+
+/* views */
+main>section.view{display:none}
+main>section.view.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){main>section.view.on{animation:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(110deg,var(--bg) 0 42%,transparent 42%),linear-gradient(160deg,#dfe9e4,#b8cfc6 60%,#9fbdb2)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,560px) 1fr;min-height:640px;align-items:center;padding-block:48px}
+.hero h1{font-weight:700;font-size:45px;line-height:44px;letter-spacing:3px;background:linear-gradient(178deg,#094839 7%,#0f7b33 50%,#16ae2d 93%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:6px}
+.hero p.lead{font-weight:300;font-size:24px;line-height:33px;margin:22px 0 28px;max-width:440px}
+.chips{display:flex;flex-wrap:wrap;gap:20px 18px;margin-top:34px;max-width:440px}
+.chip{display:flex;align-items:center;gap:10px;font-weight:500;font-size:14px;letter-spacing:.14px;color:#071c00;max-width:170px;line-height:20px}
+.chip i{display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:#d7efd9;color:var(--brand);flex:none}
+:root[data-theme="dark"] .chip{color:var(--fg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip{color:var(--fg)}}
+.photo-slot{position:absolute;inset:0 0 0 38%;z-index:1;display:grid;place-items:end center;padding:24px}
+.photo-slot small{background:rgba(255,255,255,.85);color:#33403a;border-radius:8px;padding:6px 12px;font-size:12px}
+.hx{position:absolute;background:#fff;opacity:.88;clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);aspect-ratio:1.1}
+.hero-grad{position:absolute;inset:0 0 0 30%;z-index:0;background:radial-gradient(60% 70% at 70% 40%,#e9f1ee 0,transparent 70%)}
+.hero:after{content:"";position:absolute;inset:auto 0 0 0;height:90px;background:linear-gradient(transparent,rgba(123,207,84,.25));z-index:1}
+
+/* highlights band */
+.band{background:rgba(123,207,84,.2);box-shadow:inset -2px 4px 4.2px 1px rgba(253,253,253,.72);backdrop-filter:blur(5px)}
+:root[data-theme="dark"] .band{background:rgba(111,196,67,.12);box-shadow:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .band{background:rgba(111,196,67,.12);box-shadow:none}}
+.band .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:44px;text-align:center}
+.band .it{display:flex;flex-direction:column;align-items:center;gap:6px}
+.band .it .i{width:30px;height:30px;color:var(--fg)}
+.band h3{font-size:24px;font-weight:600;line-height:30px}
+.band p{color:var(--muted)}
+
+/* sections */
+.sec{padding-block:56px}
+.sec h2.t{font-size:32px;font-weight:700;color:var(--navy);letter-spacing:-.32px;text-align:center;line-height:40px}
+.sec p.s{text-align:center;color:var(--muted);margin-top:4px}
+.panel{border:1px solid rgba(0,0,0,.05);background:rgba(128,128,128,.06);border-radius:20px;padding:20px}
+.grid-sp{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;margin-top:28px}
+.sp{position:relative;background:var(--surface);border:1px solid rgba(56,145,8,.2);border-radius:20px;padding:20px 18px;box-shadow:inset 0 0 8px rgba(56,145,8,.15);display:flex;flex-direction:column;gap:10px;min-width:0}
+.sp .h{display:flex;align-items:center;gap:10px}
+.sp .ic{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;flex:none}
+.sp h3{font-size:15px;font-weight:600;color:var(--brand)}
+.sp p{font-size:13px;color:var(--muted);line-height:1.45}
+.sp .n{font-size:12px;color:var(--faint)}
+.sp .wa{margin-top:auto;display:flex;align-items:center;gap:8px;background:none;border:0;padding:6px 0 0;color:var(--brand);font-weight:500;font-size:14px;text-align:left}
+.wa-dot{width:22px;height:22px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center}
+.wa-dot .i{width:13px;height:13px;stroke-width:2.4}
+.center{display:flex;justify-content:center;margin-top:22px}
+h2.how{font-size:20px;color:var(--brand-2);font-weight:700;text-align:center;border-bottom:1px solid rgba(56,145,8,.42);padding-bottom:6px;margin:44px 0 0;line-height:40px;letter-spacing:-.32px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;text-align:center;padding:22px 8px 10px}
+.step{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0}
+.step .ring{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#d7efd9;color:var(--brand)}
+.step .ring.wa{background:#25d366;color:#fff}
+.step h3{font-size:13px;font-weight:600;line-height:20px}
+.step p{font-size:11px;color:var(--muted);line-height:16px;max-width:170px}
+
+/* impact */
+.impact{display:grid;grid-template-columns:minmax(0,500px) minmax(0,1fr);border-radius:0 24px 24px 0;overflow:hidden;margin-right:max(0px,calc((100vw - 1240px)/-2));}
+.impact .g{background:var(--panel);color:#fff;padding:44px 40px;display:flex;flex-direction:column;gap:18px;border-radius:24px 0 0 24px}
+.impact .g h2{font-size:30px;line-height:1.05;font-weight:700}
+.impact .g p{font-weight:300;font-size:18px;line-height:1.2}
+.stats{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:6px}
+.stats b{display:block;font-size:40px;line-height:1.2;font-weight:700}
+.stats span{display:block;font-size:11px;font-weight:300}
+.impact .r{background:var(--surface-2);padding:22px 0 22px 22px;display:flex;flex-direction:column;gap:14px;min-width:0;border-radius:0 24px 24px 0}
+.track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 22px 14px 0;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.tm{flex:none;width:min(360px,80vw);background:var(--surface);border:1px solid rgba(217,227,244,.7);border-radius:24px;box-shadow:var(--shadow);padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;scroll-snap-align:start;min-height:270px}
+.tm .q{font-size:34px;line-height:20px;color:var(--green);font-family:Georgia,serif;font-weight:700}
+.tm blockquote{margin:6px 0 0;font-family:var(--font2);font-style:italic;font-size:16px;line-height:24px}
+.tm footer{display:flex;gap:14px;align-items:center;border-top:1px solid rgba(217,227,244,.4);padding-top:16px;font-family:var(--font2)}
+.av{width:44px;height:44px;border-radius:50%;background:#a6d6c2;color:#006644;font-weight:700;font-size:14px;display:grid;place-items:center;flex:none}
+.tm footer b{display:block;font-size:14px;line-height:20px}
+.tm footer span{display:block;font-size:12px;color:var(--muted);line-height:16px}
+.arrows{display:flex;gap:8px;padding-right:22px;justify-content:flex-end}
+.arrows button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--brand);display:grid;place-items:center}
+
+/* inner pages */
+.page-h{background:linear-gradient(160deg,#e3eee9,#c9ddd4);padding-block:56px}
+:root[data-theme="dark"] .page-h{background:linear-gradient(160deg,#14231c,#0f1a15)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .page-h{background:linear-gradient(160deg,#14231c,#0f1a15)}}
+.page-h h1{font-size:40px;line-height:1.1;font-weight:700;color:var(--brand);letter-spacing:.5px}
+.page-h p{color:var(--muted);margin-top:10px;max-width:640px;font-size:18px;font-weight:300}
+.crumb{font-size:13px;color:var(--faint);margin-bottom:10px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.tools input[type=search]{flex:1 1 240px;min-width:0;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:12px;padding:12px 14px;font:inherit}
+.pill{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:8px 16px;font-size:14px}
+.pill[aria-pressed="true"]{background:var(--brand);color:#fff;border-color:var(--brand)}
+:root[data-theme="dark"] .pill[aria-pressed="true"]{color:#0d1511}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pill[aria-pressed="true"]{color:#0d1511}}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;min-width:0}
+.card h3{font-size:20px;color:var(--brand);margin-bottom:8px}
+.card p{color:var(--muted)}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:2px solid var(--line);margin-left:8px}
+.tl li{padding:0 0 22px 22px;position:relative}
+.tl li:before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--green)}
+.tl b{display:block;color:var(--brand)}
+.tl span{color:var(--muted);font-size:15px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:6px}
+.kpi{border-radius:16px;background:var(--panel);color:#fff;padding:22px}
+.kpi b{font-size:36px;display:block;line-height:1.1}
+.kpi span{font-weight:300;font-size:14px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 20px;margin-bottom:12px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;font-weight:600;color:var(--brand)}
+.faq summary::-webkit-details-marker{display:none}
+.faq details[open] summary .i{transform:rotate(180deg)}
+.faq details p{padding:0 0 18px;color:var(--muted)}
+form.f{display:grid;gap:14px}
+.f label{display:grid;gap:6px;font-size:14px;font-weight:500;color:var(--muted)}
+.f input,.f select,.f textarea{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:12px;padding:12px 14px;font:inherit;min-width:0;width:100%}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ok{background:var(--green-soft);border:1px solid var(--green);color:var(--brand-2);border-radius:14px;padding:16px 18px}
+.info-list{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.info-list li{display:flex;gap:12px;align-items:flex-start}
+.info-list .i{color:var(--green);margin-top:3px}
+.team{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.team .card{text-align:center;display:grid;justify-items:center;gap:6px}
+.team .av{width:64px;height:64px;font-size:20px}
+.news-i{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.news-i time{color:var(--green);font-weight:600;font-size:14px}
+.news-i h3{font-size:18px;color:var(--brand)}
+.prose p{margin-bottom:14px;color:var(--muted)}
+.prose h3{margin:22px 0 8px;color:var(--brand)}
+
+/* footer */
+footer.site{background:var(--footer);color:#e6f2ec;margin-top:56px;padding-block:44px 22px}
+footer.site .cols4{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:28px}
+footer.site h4{margin:0 0 12px;font-size:11px;font-weight:600;letter-spacing:1.2px;color:#bfe3cf}
+footer.site ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:13px}
+footer.site a{text-decoration:none;color:#e6f2ec}
+footer.site a:hover{text-decoration:underline}
+footer.site .brand{color:#fff}
+footer.site .soc{display:flex;gap:12px;margin:14px 0}
+footer.site .soc a{width:34px;height:34px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.4);border-radius:8px}
+footer.site .row{display:flex;gap:8px;align-items:flex-start}
+footer.site .bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15)}
+footer.site .bot nav{display:flex;gap:18px}
+.fab{position:fixed;right:max(20px,calc(env(safe-area-inset-right,0px) + 16px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;border:0;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.fab .i{width:28px;height:28px}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#111c2c;color:#fff;border-radius:12px;padding:12px 18px;font-size:14px;z-index:70;max-width:min(92vw,420px);text-align:center}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(92vw,480px);width:100%;background:var(--surface);color:var(--fg);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(5,20,14,.55)}
+dialog .in{padding:26px;display:grid;gap:14px}
+dialog .hd{display:flex;justify-content:space-between;align-items:center}
+dialog h2{font-size:22px;color:var(--brand)}
+.x{background:none;border:0;color:var(--muted);width:36px;height:36px;display:grid;place-items:center}
+.demo{font-size:12px;color:var(--faint)}
+.f label.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:13px}
+.f label.chk input{width:18px;height:18px;margin-top:2px;flex:none}
+.f label.chk a{color:var(--brand)}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.err{background:rgba(220,40,40,.08);border:1px solid rgba(220,40,40,.5);color:#b42318;border-radius:12px;padding:12px 14px;font-size:14px}
+.btn[disabled]{opacity:.6;cursor:wait}
+
+@media (max-width:1080px){
+  nav.main{gap:18px}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .impact{grid-template-columns:1fr;margin-right:0;border-radius:24px}
+  .impact .g{border-radius:24px 24px 0 0}.impact .r{border-radius:0 0 24px 24px}
+  footer.site .cols4{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:820px){
+  .burger{display:grid;margin-left:auto}
+  header.top .wrap{flex-wrap:wrap;gap:8px 12px;min-height:72px}
+  nav.main{display:none;order:5;flex-basis:100%;flex-direction:column;gap:4px;margin:0 0 10px}
+  nav.main.open{display:flex}
+  nav.main a{padding:10px 0}
+  .hero{background:linear-gradient(180deg,var(--bg) 0 62%,#c4d8cf 62%)}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-bottom:300px}
+  .photo-slot{inset:auto 0 0 0;height:300px}
+  .hero h1{font-size:34px;line-height:36px;letter-spacing:2px}
+  .hero p.lead{font-size:19px;line-height:27px}
+  .band .wrap{grid-template-columns:repeat(2,1fr)}
+  .cols,.kpis{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .impact .g{padding:32px 24px}
+  .news-i{grid-template-columns:1fr;gap:4px}
+  .f .two{grid-template-columns:1fr}
+  .page-h h1{font-size:32px}
+  .sec h2.t{font-size:26px;line-height:32px}
+}
+@media (max-width:480px){footer.site .cols4{grid-template-columns:1fr}.band .wrap{gap:28px 12px}.band h3{font-size:19px}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5ZM6 12v5c3 3 9 3 12 0v-5"/></symbol>
+<symbol id="i-hand" viewBox="0 0 24 24"><path d="M9 11V5a2 2 0 1 1 4 0v5m0 0V4a2 2 0 1 1 4 0v8m0-4a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-1a8 8 0 0 1-6-2.7L3 15a2 2 0 0 1 3-2.6l3 2.6"/></symbol>
+<symbol id="i-net" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="m7 7 3 3m4 0 3-3m-10 10 3-3m4 0 3 3"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4zM17.5 6.5h.01"/></symbol>
+<symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+<symbol id="logo" viewBox="0 0 64 64"><path d="M32 6 52 17.500v23L32 52 12 40.500v-23Z" fill="none" stroke="#f97306" stroke-width="4"/><circle cx="32" cy="29" r="7" fill="#389108"/><circle cx="32" cy="6" r="4" fill="#389108"/><circle cx="52" cy="17.500" r="4" fill="#16ae2d"/><circle cx="12" cy="17.500" r="4" fill="#16ae2d"/><circle cx="32" cy="52" r="4" fill="#389108"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Conecta Saúde, início"><svg><use href="#logo"/></svg><div><b>CONECTA</b><span>SAÚDE</span></div></a>
+    <nav class="main" id="nav" aria-label="Principal">
+      <a href="#especialidades" data-v="especialidades">Especialidades</a>
+      <a href="#como-funciona" data-v="como-funciona">Como funciona</a>
+      <a href="#sobre" data-v="sobre">Sobre o projeto</a>
+      <a href="#duvidas" data-v="duvidas">Dúvidas frequentes</a>
+      <a href="#contato" data-v="contato">Contato</a>
+    </nav>
+    <button class="theme" id="themeBtn" type="button" aria-label="Alternar tema"><svg class="i"><use href="#i-moon"/></svg></button>
+    <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false"><svg class="i"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- INÍCIO -->
+<section class="view" id="v-inicio">
+  <div class="hero">
+    <div class="hero-grad"></div>
+    <div class="photo-slot" id="heroPhoto" aria-hidden="true"><small>Espaço da foto principal (profissional de saúde)</small></div>
+    <div class="wrap">
+      <div>
+        <h1>Cuidado conectado<br>começa com você</h1>
+        <p class="lead">Atendimentos gratuitos realizados por estudantes das Clínicas-Escola da UNICEPLAC, sempre com supervisão de professores e profissionais experientes</p>
+        <button class="btn" type="button" data-open-agenda>Agendar Consulta</button>
+        <div class="chips">
+          <div class="chip"><i><svg class="i"><use href="#i-users"/></svg></i>Atendimento Humanizado</div>
+          <div class="chip"><i><svg class="i"><use href="#i-cap"/></svg></i>Supervisão de professores</div>
+          <div class="chip"><i><svg class="i"><use href="#i-net"/></svg></i>Diversas áreas da saúde</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="band"><div class="wrap">
+    <div class="it"><svg class="i"><use href="#i-heart"/></svg><h3>Gratuito</h3><p>para toda comunidade</p></div>
+    <div class="it"><svg class="i"><use href="#i-hand"/></svg><h3>Fácil acesso</h3><p>via WhatsApp</p></div>
+    <div class="it"><svg class="i"><use href="#i-cal"/></svg><h3>Agendamento</h3><p>rápido</p></div>
+    <div class="it"><svg class="i"><use href="#i-users"/></svg><h3>Compromisso com</h3><p>Sua saúde e bem-estar</p></div>
+  </div></div>
+
+  <div class="wrap sec">
+    <div class="panel" style="padding:34px 24px 26px">
+      <h2 class="t">Nossas Especialidades</h2>
+      <p class="s">Cuidado abrangente em diversas disciplinas.</p>
+      <div class="grid-sp" id="homeSp"></div>
+      <div class="center"><a class="btn-ghost" href="#especialidades">Ver todas as nossas especialidades <svg class="i"><use href="#i-arrow"/></svg></a></div>
+      <h2 class="how">Como Funciona</h2>
+      <div class="steps" id="homeSteps"></div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-bottom:10px">
+    <div class="impact">
+      <div class="g">
+        <h2>Conectando pessoas,<br>transformando vidas.</h2>
+        <p>As clínicas-Escola da UNICEPLAC unem ensino, prática e compromisso social para oferecer cuidado de qualidade à comunidade</p>
+        <div class="stats">
+          <div><b>+20</b><span>Especialidades</span></div>
+          <div><b>+10 mil</b><span>Atendimentos</span></div>
+          <div><b>100%</b><span>Gratuitos para a comunidade</span></div>
+        </div>
+      </div>
+      <div class="r">
+        <div class="track" id="track" tabindex="0" aria-label="Depoimentos"></div>
+        <div class="arrows"><button type="button" id="prev" aria-label="Anterior"><svg class="i"><use href="#i-left"/></svg></button><button type="button" id="next" aria-label="Próximo"><svg class="i"><use href="#i-right"/></svg></button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="view" id="v-especialidades">
+  <div class="page-h"><div class="wrap"><div class="crumb">Início / Especialidades</div><h1>Nossas Especialidades</h1><p>Cuidado abrangente em diversas disciplinas, com atendimento gratuito nas Clínicas-Escola da UNICEPLAC.</p></div></div>
+  <div class="wrap sec" style="padding-top:32px">
+    <div class="tools"><input type="search" id="spSearch" placeholder="Buscar especialidade" aria-label="Buscar especialidade"><div class="tools" id="spCats"></div></div>
+    <div class="grid-sp" id="allSp"></div>
+    <p class="s" id="spEmpty" hidden style="margin-top:28px">Nenhuma especialidade encontrada. Tente outro termo.</p>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="view" id="v-como-funciona">
+  <div class="page-h"><div class="wrap"><div class="crumb">Início / Como funciona</div><h1>Como Funciona</h1><p>Do primeiro contato à avaliação do atendimento, em cinco passos simples.</p></div></div>
+  <div class="wrap sec" style="padding-top:32px">
+    <div class="cols">
+      <div class="card"><ol class="tl" id="stepList"></ol></div>
+      <div class="card" id="miniAgenda">
+        <h3>Simule seu agendamento</h3>
+        <p style="margin-bottom:14px">Escolha a especialidade e o período. Esta é uma demonstração, nenhum dado é enviado.</p>
+        <form class="f" id="miniForm">
+          <label>Especialidade<select id="mSp"></select></label>
+          <div class="two"><label>Dia<select id="mDay"><option>Segunda-feira</option><option>Terça-feira</option><option>Quarta-feira</option><option>Quinta-feira</option><option>Sexta-feira</option><option>Sábado</option></select></label>
+          <label>Período<select id="mPer"><option>Manhã (08h–12h)</option><option>Tarde (13h–17h)</option></select></label></div>
+          <button class="btn" type="submit">Ver horário sugerido</button>
+        </form>
+        <div class="ok" id="miniOk" hidden style="margin-top:14px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="view" id="v-sobre">
+  <div class="page-h"><div class="wrap"><div class="crumb">Início / Sobre o projeto</div><h1>Sobre o projeto</h1><p>As Clínicas-Escola da UNICEPLAC unem ensino, prática e compromisso social para oferecer cuidado de qualidade à comunidade.</p></div></div>
+  <div class="wrap sec" style="padding-top:32px;display:grid;gap:28px">
+    <div class="kpis">
+      <div class="kpi"><b>+20</b><span>Especialidades</span></div>
+      <div class="kpi"><b>+10 mil</b><span>Atendimentos</span></div>
+      <div class="kpi"><b>100%</b><span>Gratuitos para a comunidade</span></div>
+      <div class="kpi"><b>+60</b><span>Professores supervisores</span></div>
+    </div>
+    <div class="cols">
+      <div class="card"><h3>Nossa missão</h3><p>Aproximar a universidade da comunidade do Distrito Federal, oferecendo atendimento em saúde acolhedor e gratuito enquanto formamos profissionais preparados e humanos.</p></div>
+      <div class="card"><h3>Como garantimos qualidade</h3><p>Todo atendimento é realizado por estudantes em formação, acompanhados em tempo integral por professores e profissionais experientes de cada área.</p></div>
+    </div>
+    <div class="card"><h3 style="margin-bottom:18px">Nossa trajetória</h3>
+      <ul class="tl">
+        <li><b>Criação das primeiras clínicas</b><span>Psicologia e Fisioterapia abrem as portas para a comunidade do Gama.</span></li>
+        <li><b>Expansão multidisciplinar</b><span>Odontologia, Nutrição e Enfermagem passam a integrar o projeto.</span></li>
+        <li><b>Agendamento pelo WhatsApp</b><span>Contato direto e simples, com lembretes automáticos.</span></li>
+        <li><b>Conecta Saúde</b><span>Nova plataforma reúne todas as especialidades em um só lugar.</span></li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- DÚVIDAS -->
+<section class="view" id="v-duvidas">
+  <div class="page-h"><div class="wrap"><div class="crumb">Início / Dúvidas frequentes</div><h1>Dúvidas frequentes</h1><p>Respostas rápidas sobre o atendimento nas Clínicas-Escola.</p></div></div>
+  <div class="wrap sec faq" id="faq" style="padding-top:32px;max-width:860px"></div>
+</section>
+
+<!-- CONTATO -->
+<section class="view" id="v-contato">
+  <div class="page-h"><div class="wrap"><div class="crumb">Início / Contato</div><h1>Contato</h1><p>Fale com a nossa equipe pelo WhatsApp ou envie uma mensagem.</p></div></div>
+  <div class="wrap sec" style="padding-top:32px">
+    <div class="cols">
+      <div class="card">
+        <h3>Envie uma mensagem</h3>
+        <form class="f" id="contactForm">
+          <label>Nome<input id="cName" name="nome" required maxlength="150" autocomplete="name"></label>
+          <div class="two"><label>E-mail<input id="cMail" name="email" type="email" required autocomplete="email"></label><label>Telefone<input id="cTel" name="telefone" type="tel" maxlength="30" autocomplete="tel" placeholder="(61) 90000-0000"></label></div>
+          <label>Mensagem<textarea id="cMsg" name="mensagem" rows="5" required></textarea></label>
+          <label class="chk"><input type="checkbox" name="consentimento_lgpd" value="on" required> <span>Concordo com a <a href="#privacidade" target="_blank">Política de Privacidade</a> e autorizo o uso dos meus dados para contato sobre o atendimento (LGPD).</span></label>
+          <label class="hp" aria-hidden="true">Site<input name="site" tabindex="-1" autocomplete="off"></label>
+          <div class="err" hidden></div>
+          <button class="btn" type="submit">Enviar mensagem</button>
+        </form>
+        <div class="ok" id="contactOk" hidden style="margin-top:14px"></div>
+      </div>
+      <div class="card">
+        <h3>Atendimento</h3>
+        <ul class="info-list">
+          <li><svg class="i"><use href="#i-chat"/></svg><div><b>WhatsApp</b><br>(81) 99623-6811</div></li>
+          <li><svg class="i"><use href="#i-clock"/></svg><div><b>Horários</b><br>Segunda a sexta: 08h às 17h<br>Sábado: 08h às 12h</div></li>
+          <li><svg class="i"><use href="#i-pin"/></svg><div><b>Localização</b><br>UNICEPLAC, Campus Gama<br>EQSW 304/504, Sudoeste, Brasília/DF</div></li>
+        </ul>
+        <div style="margin-top:20px"><button class="btn" type="button" data-wa>Falar no WhatsApp</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PÁGINAS DO RODAPÉ -->
+<section class="view" id="v-info">
+  <div class="page-h"><div class="wrap"><div class="crumb" id="infoCrumb"></div><h1 id="infoTitle"></h1><p id="infoLead"></p></div></div>
+  <div class="wrap sec" style="padding-top:32px;max-width:900px" id="infoBody"></div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols4">
+      <div>
+        <a class="brand" href="#inicio"><svg><use href="#logo"/></svg><div><b>CONECTA</b><span>SAÚDE</span></div></a>
+        <div class="soc"><a href="#noticias" aria-label="Instagram"><svg class="i"><use href="#i-ig"/></svg></a><a href="#noticias" aria-label="Facebook"><svg class="i"><use href="#i-fb"/></svg></a><a href="#contato" aria-label="WhatsApp"><svg class="i"><use href="#i-chat"/></svg></a></div>
+        <p style="font-size:12px;max-width:220px">Projeto de extensão da UNICEPLAC.<br>Cuidando da saúde da nossa comunidade.</p>
+      </div>
+      <div><h4>NAVEGAÇÃO</h4><ul><li><a href="#inicio">Início</a></li><li><a href="#especialidades">Especialidades</a></li><li><a href="#como-funciona">Como funciona</a></li><li><a href="#sobre">Sobre o projeto</a></li><li><a href="#duvidas">Dúvidas frequentes</a></li><li><a href="#contato">Contato</a></li></ul></div>
+      <div><h4>INFORMAÇÕES</h4><ul><li><a href="#atendimentos">Atendimentos gratuitos</a></li><li><a href="#clinicas">Clínicas-Escola</a></li><li><a href="#equipe">Equipe</a></li><li><a href="#noticias">Notícias</a></li><li><a href="#trabalhe">Trabalhe conosco</a></li></ul></div>
+      <div><h4>ATENDIMENTO</h4><ul><li class="row"><svg class="i"><use href="#i-chat"/></svg><a href="#contato">Fale no WhatsApp</a></li><li class="row"><svg class="i"><use href="#i-phone"/></svg>(81) 99623-6811</li><li>Segunda a sexta: 08h às 17h<br>Sábado: 08h às 12h</li></ul></div>
+      <div><h4>LOCALIZAÇÃO</h4><ul><li>UNICEPLAC<br>Campus Gama<br>EQSW 304/504<br>Sudoeste – Brasília/DF</li></ul></div>
+    </div>
+    <div class="bot"><span>© 2026 UNICEPLAC – Todos os direitos reservados.</span><nav><a href="#privacidade">Política de Privacidade</a><a href="#termos">Termos de Uso</a><a href="#lgpd">LGPD</a></nav></div>
+  </div>
+</footer>
+
+<button class="fab" type="button" data-wa aria-label="Falar no WhatsApp"><svg class="i"><use href="#i-chat"/></svg></button>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<dialog id="agenda" aria-labelledby="agTitle">
+  <div class="in">
+    <div class="hd"><h2 id="agTitle">Agendar consulta</h2><button class="x" type="button" id="agClose" aria-label="Fechar"><svg class="i"><use href="#i-x"/></svg></button></div>
+    <form class="f" id="agForm">
+      <label>Nome completo<input id="aName" name="nome" required maxlength="150" autocomplete="name"></label>
+      <div class="two"><label>WhatsApp<input id="aTel" name="whatsapp" type="tel" required maxlength="30" placeholder="(61) 90000-0000" autocomplete="tel"></label>
+      <label>Período<select id="aPer" name="periodo"><option>Manhã</option><option>Tarde</option></select></label></div>
+      <label>Especialidade<select id="aSp" name="especialidade"></select></label>
+      <label class="chk"><input type="checkbox" name="consentimento_lgpd" value="on" required> <span>Concordo com a <a href="#privacidade" target="_blank">Política de Privacidade</a> e autorizo o uso dos meus dados para contato sobre o atendimento (LGPD).</span></label>
+          <label class="hp" aria-hidden="true">Site<input name="site" tabindex="-1" autocomplete="off"></label>
+          <div class="err" hidden></div>
+      <button class="btn" type="submit">Solicitar agendamento</button>
+    </form>
+    <div class="ok" id="agOk" hidden></div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var WA='{{ WHATSAPP_NUMBER }}';
+  var SP=[
+    {n:'Psicologia',d:'Apoio à saúde mental e serviços de aconselhamento.',c:'Saúde mental',k:8,col:'176,112,255'},
+    {n:'Odontologia',d:'Prevenção, tratamento e cuidado com a saúde bucal.',c:'Clínica',k:12,col:'0,150,200'},
+    {n:'Fisioterapia',d:'Reabilitação e recuperação de movimentos.',c:'Reabilitação',k:10,col:'56,145,8'},
+    {n:'Nutrição',d:'Orientação alimentar e acompanhamento nutricional.',c:'Clínica',k:6,col:'249,115,6'},
+    {n:'Enfermagem',d:'Cuidados básicos, orientação e prevenção.',c:'Clínica',k:9,col:'220,60,100'},
+    {n:'Fonoaudiologia',d:'Voz, fala, audição e linguagem.',c:'Reabilitação',k:5,col:'30,120,220'},
+    {n:'Educação Física',d:'Avaliação física e orientação de atividade segura.',c:'Reabilitação',k:7,col:'20,160,110'},
+    {n:'Farmácia',d:'Orientação sobre uso correto de medicamentos.',c:'Clínica',k:4,col:'120,90,220'},
+    {n:'Biomedicina',d:'Estética e análises voltadas ao bem-estar.',c:'Clínica',k:5,col:'200,140,0'},
+    {n:'Serviço Social',d:'Orientação sobre direitos e acesso a serviços.',c:'Saúde mental',k:3,col:'0,130,130'},
+    {n:'Terapia Ocupacional',d:'Autonomia e qualidade de vida no dia a dia.',c:'Reabilitação',k:4,col:'180,80,160'},
+    {n:'Pedagogia',d:'Apoio ao desenvolvimento e à aprendizagem.',c:'Saúde mental',k:3,col:'90,140,40'}
+  ];
+  var STEPS=[
+    ['Fale no WhatsApp','Entre em contato e informe a especialidade que você precisa'],
+    ['Agende seu atendimento','Nossa equipe irá te orientar e encontrar o melhor dia e horário'],
+    ['Confirme sua consulta','Você receberá todas as informações e lembretes pelo WhatsApp'],
+    ['Seja atendido','Compareça no dia agendado e receba seu atendimento com acolhimento'],
+    ['Avalie sua experiência','Sua opinião nos ajuda a melhorar cada vez mais nossos atendimentos']
+  ];
+  var STEP_ICON=['i-chat','i-cal','i-check','i-users','i-star'];
+  var TM=[
+    ['MA','Maria Almeida','Paciente de Psicologia','O atendimento na psicologia foi fundamental para o meu bem-estar. Me senti acolhida desde o primeiro contato pelo WhatsApp.'],
+    ['JS','João Silva','Paciente de Odontologia','Excelente infraestrutura e profissionais muito atenciosos. O tratamento odontológico superou minhas expectativas.'],
+    ['RC','Regina Costa','Paciente de Fisioterapia','A fisioterapia me ajudou a recuperar minha mobilidade de forma rápida e segura. Sou muito grata por esse serviço gratuito.']
+  ];
+  var FAQ=[
+    ['O atendimento é realmente gratuito?','Sim. Todos os atendimentos das Clínicas-Escola são gratuitos para a comunidade.'],
+    ['Quem realiza o atendimento?','Estudantes em formação, sempre acompanhados por professores e profissionais experientes.'],
+    ['Como faço para agendar?','Basta falar com a nossa equipe pelo WhatsApp, informar a especialidade e escolher o melhor dia e horário.'],
+    ['Preciso levar algum documento?','Leve um documento com foto e, se tiver, exames e receitas anteriores relacionados ao atendimento.'],
+    ['Posso remarcar ou cancelar?','Pode. Avise pelo WhatsApp com pelo menos um dia de antecedência para liberar o horário a outra pessoa.'],
+    ['Quanto tempo dura cada atendimento?','Depende da especialidade. Em média, entre 40 minutos e 1 hora.'],
+    ['Quem pode ser atendido?','Qualquer pessoa da comunidade, de acordo com a disponibilidade de cada especialidade.']
+  ];
+  var INFO={
+    atendimentos:['Atendimentos gratuitos','Cuidado de qualidade, sem custo para você.','p',['Os atendimentos acontecem nas Clínicas-Escola da UNICEPLAC e são totalmente gratuitos.','Para iniciar, fale com a equipe pelo WhatsApp e informe a especialidade que precisa.']],
+    clinicas:['Clínicas-Escola','Espaços onde ensino, prática e cuidado se encontram.','cards',[['Clínica de Psicologia','Atendimento individual e em grupo.'],['Clínica de Odontologia','Consultórios equipados e supervisionados.'],['Clínica de Fisioterapia','Reabilitação com acompanhamento próximo.'],['Clínica de Nutrição','Consultas e educação alimentar.']]],
+    equipe:['Equipe','Professores e profissionais que acompanham cada atendimento.','team',[['AS','Ana Souza','Coordenação geral'],['CL','Carlos Lima','Psicologia'],['PM','Patrícia Melo','Odontologia'],['RF','Rafael Ferreira','Fisioterapia'],['LB','Luciana Borges','Nutrição'],['TA','Tiago Alves','Enfermagem']]],
+    noticias:['Notícias','Novidades do projeto Conecta Saúde.','news',[['12 set 2026','Novas vagas de atendimento em Psicologia','Abertas novas agendas para o segundo semestre.'],['28 ago 2026','Mutirão de saúde bucal reúne a comunidade','Mais de 200 pessoas atendidas em um único sábado.'],['05 ago 2026','Clínica de Nutrição amplia horários','Atendimentos agora também às quintas à tarde.']]],
+    trabalhe:['Trabalhe conosco','Faça parte de um projeto que transforma vidas.','p',['Estamos sempre em busca de professores, preceptores e voluntários.','Para se candidatar, envie uma mensagem pela página de Contato.']],
+    privacidade:['Política de Privacidade','Como tratamos os seus dados.','p',['Coletamos apenas as informações necessárias para organizar o seu atendimento.','Seus dados não são vendidos nem compartilhados fora do projeto. Texto ilustrativo para a demonstração.']],
+    termos:['Termos de Uso','Regras de utilização da plataforma.','p',['Ao usar o Conecta Saúde você concorda em fornecer informações verdadeiras e em comparecer aos horários agendados.','Texto ilustrativo para a demonstração.']],
+    lgpd:['LGPD','Seus direitos sobre os dados pessoais.','p',['Você pode solicitar acesso, correção ou exclusão dos seus dados a qualquer momento pelo WhatsApp.','Texto ilustrativo para a demonstração.']]
+  };
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  function ic(id,cls){return '<svg class="i'+(cls?' '+cls:'')+'"><use href="#'+id+'"/></svg>'}
+  var tt;function toast(m){var t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(function(){t.hidden=true},3200)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+  function spCard(s){return '<article class="sp"><div class="h"><span class="ic" style="background:rgba('+s.col+',.2);color:rgb('+s.col+')">'+ic('i-pulse')+'</span><h3>'+s.n+'</h3></div><p>'+s.d+'</p><span class="n">'+s.k+' Especialistas</span><button class="wa" type="button" data-wa="'+esc(s.n)+'"><span class="wa-dot">'+ic('i-chat')+'</span>Falar no WhatsApp</button></article>'}
+  $('#homeSp').innerHTML=SP.slice(0,6).map(spCard).join('');
+  $('#homeSteps').innerHTML=STEPS.map(function(s,i){return '<div class="step"><span class="ring'+(i===0?' wa':'')+'">'+ic(STEP_ICON[i])+'</span><h3>'+(i+1)+'. '+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join('');
+  $('#stepList').innerHTML=STEPS.map(function(s,i){return '<li><b>'+(i+1)+'. '+s[0]+'</b><span>'+s[1]+'</span></li>'}).join('');
+  $('#track').innerHTML=TM.map(function(t){return '<article class="tm"><div><div class="q">“</div><blockquote>“'+t[3]+'”</blockquote></div><footer><span class="av">'+t[0]+'</span><div><b>'+t[1]+'</b><span>'+t[2]+'</span></div></footer></article>'}).join('');
+  $('#faq').innerHTML=FAQ.map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+f[0]+ic('i-down')+'</summary><p>'+f[1]+'</p></details>'}).join('');
+  var opts=SP.map(function(s){return '<option>'+s.n+'</option>'}).join('');
+  ['#mSp','#aSp'].forEach(function(s){$(s).innerHTML=opts});
+
+  /* especialidades: busca + categorias */
+  var cats=['Todas'].concat(SP.map(function(s){return s.c}).filter(function(v,i,a){return a.indexOf(v)===i})),cat='Todas';
+  $('#spCats').innerHTML=cats.map(function(c){return '<button type="button" class="pill" aria-pressed="'+(c===cat)+'" data-cat="'+c+'">'+c+'</button>'}).join('');
+  function renderSp(){var q=$('#spSearch').value.trim().toLowerCase();
+    var l=SP.filter(function(s){return (cat==='Todas'||s.c===cat)&&(s.n+' '+s.d).toLowerCase().indexOf(q)>-1});
+    $('#allSp').innerHTML=l.map(spCard).join('');$('#spEmpty').hidden=l.length>0}
+  $('#spCats').addEventListener('click',function(e){var b=e.target.closest('[data-cat]');if(!b)return;cat=b.dataset.cat;$$('#spCats .pill').forEach(function(p){p.setAttribute('aria-pressed',p===b)});renderSp()});
+  $('#spSearch').addEventListener('input',renderSp);renderSp();
+
+  /* foto: hexágonos decorativos */
+  var hx=[[8,10,70],[26,34,54],[2,52,80],[40,6,50],[60,28,90],[78,8,60],[88,42,74],[70,62,66],[48,72,56],[14,78,46]];
+  $('#heroPhoto').insertAdjacentHTML('afterbegin',hx.map(function(h){return '<span class="hx" style="left:'+h[0]+'%;top:'+h[1]+'%;width:'+h[2]+'px"></span>'}).join(''));
+
+  /* carrossel */
+  var tr=$('#track');
+  $('#next').onclick=function(){tr.scrollBy({left:384,behavior:'smooth'})};
+  $('#prev').onclick=function(){tr.scrollBy({left:-384,behavior:'smooth'})};
+
+  /* modal de agendamento */
+  var dlg=$('#agenda');
+  function openAgenda(sp){$('#agForm').hidden=false;$('#agOk').hidden=true;if(sp)$('#aSp').value=sp;if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
+  function closeAgenda(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
+  $('#agClose').onclick=closeAgenda;
+  dlg.addEventListener('click',function(e){if(e.target===dlg)closeAgenda()});
+  function csrf(){var m=document.cookie.match(/(?:^|; )csrftoken=([^;]+)/);return m?decodeURIComponent(m[1]):''}
+  function enviar(form,url,ok){
+    var err=$('.err',form),btn=$('button[type=submit]',form);err.hidden=true;btn.disabled=true;
+    fetch(url,{method:'POST',body:new FormData(form),headers:{'X-CSRFToken':csrf()},credentials:'same-origin'})
+      .then(function(r){return r.json().catch(function(){return {ok:false}})})
+      .then(function(d){if(d.ok){ok(d)}else{var m=d.erros?Object.keys(d.erros).map(function(k){return d.erros[k]}).join(' '):'Não foi possível enviar. Tente novamente.';err.textContent=m;err.hidden=false}})
+      .catch(function(){err.textContent='Sem conexão. Verifique a internet e tente novamente.';err.hidden=false})
+      .then(function(){btn.disabled=false})}
+  $('#agForm').addEventListener('submit',function(e){e.preventDefault();var f=e.target;
+    enviar(f,'/api/agendamento/',function(d){
+      f.hidden=true;var o=$('#agOk');o.hidden=false;
+      o.innerHTML='<b>Solicitação recebida!</b><br>'+esc($('#aName').value)+', recebemos o pedido para '+esc($('#aSp').value)+' no período da '+esc($('#aPer').value.toLowerCase())+'.'+(d.protocolo?' Protocolo <b>'+esc(d.protocolo)+'</b>.':'')+' Nossa equipe vai entrar em contato pelo WhatsApp para confirmar.';f.reset()})});
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-open-agenda]')){openAgenda();return}
+    var w=e.target.closest('[data-wa]');if(w){var s=w.dataset.wa;if(s){openAgenda(s)}else window.open('https://wa.me/'+WA+'?text='+encodeURIComponent('Olá! Gostaria de informações sobre o atendimento no Conecta Saúde.'),'_blank','noopener')}
+  });
+  $('#miniForm').addEventListener('submit',function(e){e.preventDefault();var o=$('#miniOk');o.hidden=false;
+    o.textContent='Horário sugerido: '+$('#mDay').value+', '+$('#mPer').value.split(' ')[0].toLowerCase()+', para '+$('#mSp').value+'. Em um atendimento real, a equipe confirma pelo WhatsApp.'});
+  $('#contactForm').addEventListener('submit',function(e){e.preventDefault();var f=e.target;
+    enviar(f,'/api/contato/',function(){var o=$('#contactOk');o.hidden=false;
+      o.textContent='Obrigado, '+$('#cName').value.split(' ')[0]+'! Recebemos sua mensagem e responderemos em breve.';f.reset()})});
+
+  /* páginas do rodapé */
+  function renderInfo(k){var d=INFO[k];$('#infoCrumb').textContent='Início / '+d[0];$('#infoTitle').textContent=d[0];$('#infoLead').textContent=d[1];var h='';
+    if(d[2]==='p')h='<div class="prose">'+d[3].map(function(p){return '<p>'+p+'</p>'}).join('')+'</div>';
+    if(d[2]==='cards')h='<div class="cols">'+d[3].map(function(c){return '<div class="card"><h3>'+c[0]+'</h3><p>'+c[1]+'</p></div>'}).join('')+'</div>';
+    if(d[2]==='team')h='<div class="team">'+d[3].map(function(c){return '<div class="card"><span class="av">'+c[0]+'</span><b>'+c[1]+'</b><span style="color:var(--muted);font-size:14px">'+c[2]+'</span></div>'}).join('')+'</div>';
+    if(d[2]==='news')h=d[3].map(function(n){return '<article class="news-i"><time>'+n[0]+'</time><div><h3>'+n[1]+'</h3><p style="color:var(--muted)">'+n[2]+'</p></div></article>'}).join('');
+    $('#infoBody').innerHTML=h}
+
+  /* rotas por hash */
+  var VIEWS=['inicio','especialidades','como-funciona','sobre','duvidas','contato'];
+  function route(){var k=(location.hash||'#inicio').slice(1),id;
+    if(VIEWS.indexOf(k)>-1)id=k;else if(INFO[k]){id='info';renderInfo(k)}else{id='inicio';k='inicio'}
+    $$('main>section.view').forEach(function(s){s.classList.toggle('on',s.id==='v-'+id)});
+    $$('#nav a').forEach(function(a){if(a.dataset.v===k)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+    $('#nav').classList.remove('open');$('#burger').setAttribute('aria-expanded','false');
+    window.scrollTo(0,0)}
+  window.addEventListener('hashchange',route);route();
+
+  $('#burger').onclick=function(){var o=$('#nav').classList.toggle('open');this.setAttribute('aria-expanded',o)};
+  $('#themeBtn').onclick=function(){var r=document.documentElement,dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',dark?'light':'dark')};
+})();
+</script>
+
+</body></html>
