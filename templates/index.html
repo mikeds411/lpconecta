@@ -93,19 +93,19 @@
     <div class="hero__art" aria-label="As oito clínicas-escola">
       <div class="honey">
         <div class="honey__row">
-          <a class="hex hex--light" href="#clinica-medicina" aria-label="Medicina"><svg class="i"><use href="#c-medicina"/></svg></a>
-          <a class="hex hex--green" href="#clinica-enfermagem" aria-label="Enfermagem"><svg class="i"><use href="#c-enfermagem"/></svg></a>
-          <a class="hex hex--white" href="#clinica-nutricao" aria-label="Nutrição"><svg class="i"><use href="#c-nutricao"/></svg></a>
+          <a class="hex hex--light" href="#clinica-medicina" aria-label="Medicina"><img class="hex__img" src="{% static 'landing/assets/icons/colmeia-medicina.webp' %}" alt="" width="54" height="54"></a>
+          <a class="hex hex--green" href="#clinica-enfermagem" aria-label="Enfermagem"><img class="hex__img" src="{% static 'landing/assets/icons/enfermagem.webp' %}" alt="" width="54" height="54"></a>
+          <a class="hex hex--white" href="#clinica-nutricao" aria-label="Nutrição"><img class="hex__img" src="{% static 'landing/assets/icons/nutricao.webp' %}" alt="" width="54" height="54"></a>
         </div>
         <div class="honey__row">
-          <a class="hex hex--dark" href="#clinica-odontologia" aria-label="Odontologia"><svg class="i"><use href="#c-odontologia"/></svg></a>
+          <a class="hex hex--dark" href="#clinica-odontologia" aria-label="Odontologia"><img class="hex__img" src="{% static 'landing/assets/icons/odontologia.webp' %}" alt="" width="54" height="54"></a>
           <span class="hex hex--orange" aria-hidden="true"><svg class="i"><use href="#i-hands"/></svg></span>
-          <a class="hex hex--light" href="#clinica-fisioterapia" aria-label="Fisioterapia"><svg class="i"><use href="#c-fisioterapia"/></svg></a>
-          <a class="hex hex--white" href="#clinica-psicologia" aria-label="Psicologia"><svg class="i"><use href="#c-psicologia"/></svg></a>
+          <a class="hex hex--light" href="#clinica-fisioterapia" aria-label="Fisioterapia"><img class="hex__img" src="{% static 'landing/assets/icons/colmeia-fisioterapia.webp' %}" alt="" width="54" height="54"></a>
+          <a class="hex hex--white" href="#clinica-psicologia" aria-label="Psicologia"><img class="hex__img" src="{% static 'landing/assets/icons/colmeia-psicologia.webp' %}" alt="" width="54" height="54"></a>
         </div>
         <div class="honey__row">
-          <a class="hex hex--green" href="#clinica-estetica" aria-label="Estética"><svg class="i"><use href="#c-estetica"/></svg></a>
-          <a class="hex hex--dark" href="#clinica-veterinaria" aria-label="Medicina Veterinária"><svg class="i"><use href="#c-veterinaria"/></svg></a>
+          <a class="hex hex--green" href="#clinica-estetica" aria-label="Estética"><img class="hex__img" src="{% static 'landing/assets/icons/colmeia-estetica.webp' %}" alt="" width="54" height="54"></a>
+          <a class="hex hex--dark" href="#clinica-veterinaria" aria-label="Medicina Veterinária"><img class="hex__img" src="{% static 'landing/assets/icons/veterinaria.webp' %}" alt="" width="54" height="54"></a>
           <span class="hex hex--ghost" aria-hidden="true"></span>
         </div>
       </div>
@@ -133,49 +133,49 @@
 
     <ul class="clinics">
       <li class="clinic" id="clinica-medicina">
-        <span class="clinic__ico clinic__ico--blue"><svg class="i"><use href="#c-medicina"/></svg></span>
+        <span class="clinic__ico clinic__ico--blue"><img src="{% static 'landing/assets/icons/medicina.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Medicina</h3>
         <p>Consultas ambulatoriais com clínica geral e especialidades, orientadas por docentes.</p>
         <a class="btn btn--wa" data-clinic="medicina" href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20cl%C3%ADnica%20de%20Medicina." target="_blank" rel="noopener" aria-label="Falar com a clínica de Medicina no WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg>Falar no WhatsApp</a>
       </li>
       <li class="clinic" id="clinica-enfermagem">
-        <span class="clinic__ico clinic__ico--teal"><svg class="i"><use href="#c-enfermagem"/></svg></span>
+        <span class="clinic__ico clinic__ico--teal"><img src="{% static 'landing/assets/icons/enfermagem.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Enfermagem</h3>
         <p>Cuidados de enfermagem, orientações de saúde e acompanhamento.</p>
         <a class="btn btn--wa" data-clinic="enfermagem" href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20cl%C3%ADnica%20de%20Enfermagem." target="_blank" rel="noopener" aria-label="Falar com a clínica de Enfermagem no WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg>Falar no WhatsApp</a>
       </li>
       <li class="clinic" id="clinica-nutricao">
-        <span class="clinic__ico clinic__ico--lime"><svg class="i"><use href="#c-nutricao"/></svg></span>
+        <span class="clinic__ico clinic__ico--lime"><img src="{% static 'landing/assets/icons/nutricao.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Nutrição</h3>
         <p>Avaliação nutricional e orientação para uma alimentação saudável.</p>
         <a class="btn btn--wa" data-clinic="nutricao" href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20cl%C3%ADnica%20de%20Nutri%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar com a clínica de Nutrição no WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg>Falar no WhatsApp</a>
       </li>
       <li class="clinic" id="clinica-odontologia">
-        <span class="clinic__ico clinic__ico--sky"><svg class="i"><use href="#c-odontologia"/></svg></span>
+        <span class="clinic__ico clinic__ico--sky"><img src="{% static 'landing/assets/icons/odontologia.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Odontologia</h3>
         <p>Prevenção, avaliação e tratamentos odontológicos para toda a família.</p>
         <a class="btn btn--wa" data-clinic="odontologia" href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20cl%C3%ADnica%20de%20Odontologia." target="_blank" rel="noopener" aria-label="Falar com a clínica de Odontologia no WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg>Falar no WhatsApp</a>
       </li>
       <li class="clinic" id="clinica-fisioterapia">
-        <span class="clinic__ico clinic__ico--amber"><svg class="i"><use href="#c-fisioterapia"/></svg></span>
+        <span class="clinic__ico clinic__ico--amber"><img src="{% static 'landing/assets/icons/fisioterapia.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Fisioterapia</h3>
         <p>Reabilitação e recuperação de movimento, com plano de cuidado individual.</p>
         <a class="btn btn--wa" data-clinic="fisioterapia" href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20cl%C3%ADnica%20de%20Fisioterapia." target="_blank" rel="noopener" aria-label="Falar com a clínica de Fisioterapia no WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg>Falar no WhatsApp</a>
       </li>
       <li class="clinic" id="clinica-psicologia">
-        <span class="clinic__ico clinic__ico--violet"><svg class="i"><use href="#c-psicologia"/></svg></span>
+        <span class="clinic__ico clinic__ico--violet"><img src="{% static 'landing/assets/icons/psicologia.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Psicologia</h3>
         <p>Apoio à saúde mental e serviços de aconselhamento.</p>
         <a class="btn btn--wa" data-clinic="psicologia" href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20cl%C3%ADnica%20de%20Psicologia." target="_blank" rel="noopener" aria-label="Falar com a clínica de Psicologia no WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg>Falar no WhatsApp</a>
       </li>
       <li class="clinic" id="clinica-estetica">
-        <span class="clinic__ico clinic__ico--rose"><svg class="i"><use href="#c-estetica"/></svg></span>
+        <span class="clinic__ico clinic__ico--rose"><img src="{% static 'landing/assets/icons/estetica.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Estética</h3>
         <p>Cuidados estéticos e bem-estar da pele e do corpo.</p>
         <a class="btn btn--wa" data-clinic="estetica" href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20atendimento%20na%20cl%C3%ADnica%20de%20Est%C3%A9tica." target="_blank" rel="noopener" aria-label="Falar com a clínica de Estética no WhatsApp"><svg class="i"><use href="#i-whatsapp"/></svg>Falar no WhatsApp</a>
       </li>
       <li class="clinic" id="clinica-veterinaria">
-        <span class="clinic__ico clinic__ico--orange"><svg class="i"><use href="#c-veterinaria"/></svg></span>
+        <span class="clinic__ico clinic__ico--orange"><img src="{% static 'landing/assets/icons/veterinaria.webp' %}" alt="" width="28" height="28" loading="lazy"></span>
         <h3>Medicina Veterinária</h3>
         <span class="clinic__tag">Valor acessível</span>
         <p>Cuidado e atenção à saúde do seu animal de estimação. Aqui o atendimento não é gratuito: é cobrado um valor acessível, aberto a todas as pessoas.</p>
