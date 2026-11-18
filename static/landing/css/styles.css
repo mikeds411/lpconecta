@@ -304,3 +304,11 @@ a.hex:hover,a.hex:focus-visible{--bg:var(--orange-400);--fg:#fff;transform:scale
 
 /* ---------- Selo "Valor acessível" (Medicina Veterinária) ---------- */
 .clinic__tag{align-self:flex-start;margin-top:-4px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.02em;color:#b24800;background:rgba(249,115,6,.12);border:1px solid rgba(249,115,6,.35)}
+
+/* ---------- Título das avaliações ---------- */
+.reviews{display:flex;flex-direction:column;gap:14px;min-width:0}
+.reviews__head{padding-inline:4px}
+.reviews__head h3{display:flex;align-items:center;gap:10px;font-size:clamp(20px,2.2vw,24px);line-height:1.25;font-weight:700;color:var(--navy)}
+.reviews__head h3::before{content:"";flex:none;width:6px;height:1.1em;border-radius:3px;background:linear-gradient(180deg,var(--orange-400),var(--orange-600))}
+.reviews__head p{margin-top:4px;font-size:15px;color:var(--text)}
+.reviews .quotes{flex:1}
