@@ -59,8 +59,8 @@ button{font:inherit;color:inherit}
 
 /* ---------- Botões ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:600;cursor:pointer;border:0;transition:transform .15s,box-shadow .15s,background-color .15s}
-.btn--orange{min-height:55px;padding:0 32px;border-radius:10px;color:#fff;font-size:16px;letter-spacing:.14px;border:3px solid var(--orange-edge);background:linear-gradient(180deg,var(--orange-400) 1%,var(--orange-600) 48%,var(--orange-600));box-shadow:0 6px 16px rgba(201,93,5,.28)}
-.btn--orange:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(201,93,5,.34)}
+.btn--orange{min-height:55px;padding:0 32px;border-radius:10px;color:#fff;font-size:16px;letter-spacing:.14px;border:0;background:var(--orange-400);box-shadow:none}
+.btn--orange:hover{transform:translateY(-2px);background:var(--orange-edge)}
 .btn--wa{width:100%;min-height:44px;padding:0 14px;margin-top:auto;border-radius:12px;font-size:14px;color:var(--green-900);background:rgba(56,145,8,.08);border:1px solid var(--green-accent)}
 .btn--wa .i{width:20px;height:20px;fill:#25d366;stroke:none}
 .btn--wa:hover{background:#25d366;color:#fff;border-color:#25d366}

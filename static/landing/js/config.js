@@ -6,7 +6,7 @@
    ========================================================= */
 window.CONECTA_CONFIG = {
   // Número geral do projeto (rodapé e botão flutuante)
-  whatsappGeral: "5561999999999",
+  whatsappGeral: "5561991497950",
 
   // Número de cada clínica. Deixe "" para usar o número geral.
   clinicas: {
